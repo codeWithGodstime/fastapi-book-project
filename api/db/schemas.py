@@ -7,7 +7,7 @@ from pydantic import BaseModel
 class Genre(str, Enum):
     """Book genres."""
 
-    SCI_FI = "Science fic"
+    SCI_FI = "Science Fiction"
     FANTASY = "Fantasy"
     HORROR = "Horror"
     MYSTERY = "Mystery"
