@@ -1,0 +1,22 @@
+name: deploy
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Stop Running Containers
+      run: docker-compose down || true
+
+    - name: Build and Start Containers Locally
+      run: docker-compose up -d --build 
+      
+    - name: Clean Up Unused Docker Resources
+      run: docker system prune -af
